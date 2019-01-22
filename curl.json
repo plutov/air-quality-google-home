@@ -1,0 +1,17 @@
+{
+  "originalDetectIntentRequest": {
+		"payload": {
+			"device": {
+				"location": {
+					"coordinates": {
+						"latitude": 10.823,
+						"longitude": 106.629
+					}
+				}
+			}
+		}
+  },
+  "queryResult": {
+    "action": "get"
+  }
+}
