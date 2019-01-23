@@ -18,11 +18,17 @@ type DialogFlowOriginalRequest struct {
 // DialogFlowOriginalRequestData struct
 type DialogFlowOriginalRequestData struct {
 	Device DialogFlowOriginalRequestDevice `json:"device"`
+	User   DialogFlowOriginalRequestUser   `json:"user"`
 }
 
 // DialogFlowOriginalRequestDevice struct
 type DialogFlowOriginalRequestDevice struct {
 	Location DialogFlowOriginalRequestLocation `json:"location"`
+}
+
+// DialogFlowOriginalRequestUser struct
+type DialogFlowOriginalRequestUser struct {
+	Permissions []string `json:"permissions"`
 }
 
 // DialogFlowOriginalRequestLocation struct

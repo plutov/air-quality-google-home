@@ -11,10 +11,11 @@ func init() {
 }
 
 var (
-	userMsg          = "The air quality index in your city is %d right now. %s"
+	userMsg          = "The air quality index in your city is %d right now. %s I hope it was helpful, see you!"
 	errMsg           = "Sorry, I was unable to get air quality index in your place."
 	actionNotFound   = "Sorry, I am lost, please try next time."
 	locationNotFound = "Sorry, I was not able to find your location. Are you from outer space?"
+	cancelMsg        = "Gotcha, bye!"
 )
 
 func handle(w http.ResponseWriter, r *http.Request) {
@@ -42,7 +43,13 @@ func handle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if dfErr == nil && dfReq.QueryResult.Action == "get" {
-		handleGetAction(w, r, dfReq)
+		if len(dfReq.OriginalRequest.Data.User.Permissions) > 0 && dfReq.OriginalRequest.Data.User.Permissions[0] == "DEVICE_PRECISE_LOCATION" {
+			handleGetAction(w, r, dfReq)
+			return
+		}
+
+		// User hasn't granted permission
+		returnAPIErrorMessage(w, cancelMsg)
 		return
 	}
 
@@ -93,7 +100,7 @@ func handleGetAction(w http.ResponseWriter, r *http.Request, dfReq DialogFlowReq
 	json.NewEncoder(w).Encode(DialogFlowResponse{
 		Data: DialogFlowResponseData{
 			Google: DialogFlowResponseGoogle{
-				ExpectUserResponse: true,
+				ExpectUserResponse: false,
 				RichResponse: DialogFlowRichResponse{
 					Items: []DialogFlowItem{
 						DialogFlowItem{
@@ -112,7 +119,7 @@ func returnAPIErrorMessage(w http.ResponseWriter, msg string) {
 	json.NewEncoder(w).Encode(DialogFlowResponse{
 		Data: DialogFlowResponseData{
 			Google: DialogFlowResponseGoogle{
-				ExpectUserResponse: true,
+				ExpectUserResponse: false,
 				RichResponse: DialogFlowRichResponse{
 					Items: []DialogFlowItem{
 						DialogFlowItem{
