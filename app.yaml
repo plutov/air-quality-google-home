@@ -1,10 +1,7 @@
 runtime: go
 api_version: go1
 env_variables:
-  WAQI_TOKEN: 
-  # Basic Auth
-  AUTH_USER:
-  AUTH_PASS:
+  WAQI_TOKEN:
 
 handlers:
 - url: /
