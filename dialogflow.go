@@ -56,7 +56,7 @@ type DialogFlowResponseData struct {
 type DialogFlowResponseGoogle struct {
 	ExpectUserResponse bool                            `json:"expectUserResponse"`
 	RichResponse       DialogFlowRichResponse          `json:"richResponse"`
-	SystemIntent       *DialogFlowResponseSystemIntent `json:"systemIntent"`
+	SystemIntent       *DialogFlowResponseSystemIntent `json:"systemIntent,omitempty"`
 }
 
 // DialogFlowRichResponse struct

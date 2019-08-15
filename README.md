@@ -6,7 +6,7 @@ https://assistant.google.com/services/a/uid/000000dc5a4e9676
 
 ## Deploy
 
-Set `WAQI_TOKEN` in `app.yaml`.
+Set `WAQI_TOKEN` in `env.yaml`.
 
 ```bash
 make deploy

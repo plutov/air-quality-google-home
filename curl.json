@@ -1,5 +1,5 @@
 {
-  "originalDetectIntentRequest": {
+	"originalDetectIntentRequest": {
 		"payload": {
 			"user": {
 				"permissions": [
@@ -15,8 +15,8 @@
 				}
 			}
 		}
-  },
-  "queryResult": {
-    "action": "get"
-  }
+	},
+	"queryResult": {
+		"action": "get"
+	}
 }

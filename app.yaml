@@ -1,7 +1,8 @@
 runtime: go
 api_version: go1
-env_variables:
-  WAQI_TOKEN:
+
+includes:
+  - env.yaml
 
 handlers:
 - url: /
